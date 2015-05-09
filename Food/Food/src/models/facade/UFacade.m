@@ -32,6 +32,7 @@
 - (void)initConfiguration
 {
     self.entityClass  = [self getDefaultEntityClass];
+    self.entityManager = [UEntityManager getInstance];
 }
 
 - (void)createTable {
@@ -40,13 +41,6 @@
 
 - (int)create:(UEntity *)pEntity {
     return [self.entityManager persit:pEntity];
-}
-
-- (id)findById:(NSString *)pIdentity {
-    UEntity *tEntity   = [self.entityClass getNewInstance];
-    tEntity.identity    =   pIdentity;
-
-    return [self.entityManager findAt:tEntity entityClass:self.entityClass];
 }
 
 - (int)remove:(UEntity *)pEntity {

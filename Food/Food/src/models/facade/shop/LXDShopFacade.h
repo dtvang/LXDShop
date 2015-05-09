@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "UFacade.h"
+#import "ShopEntity.h"
+
 @interface LXDShopFacade : UFacade
 
 @end

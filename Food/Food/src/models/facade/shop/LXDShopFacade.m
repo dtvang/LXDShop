@@ -7,12 +7,21 @@
 //
 
 #import "LXDShopFacade.h"
-#define kUFactorySQLCommandCreateTable @"CREATE TABLE IF NOT EXISTS %@ (%@ INTEGER PRIMARY KEY AUTOINCREMENT,%@)"
+
+static LXDShopFacade *instance;
 
 @implementation LXDShopFacade
 
++(id)getInstance {
+    if(!instance) {
+        instance = [[[self class] alloc] init];
+    }
+    
+    return instance;
+}
+
 - (Class)getDefaultEntityClass {
-    return  [self class];
+    return  [ShopEntity class];
 }
 
 @end

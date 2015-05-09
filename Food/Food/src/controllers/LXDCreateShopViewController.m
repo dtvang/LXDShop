@@ -21,6 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self setAutomaticallyAdjustsScrollViewInsets:NO];
+    
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
                                                             longitude:151.20
                                                                  zoom:6];
@@ -75,6 +77,10 @@
 
 - (IBAction)gotoWebsite:(id)sender {
      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.btnWebsite.titleLabel.text]];
+}
+
+- (IBAction)addMoreInfoClicked:(id)sender {
+    [self performSegueWithIdentifier:@"AddMoreInformation" sender:self];
 }
 
 #pragma mark - LXImageSourceDelegate

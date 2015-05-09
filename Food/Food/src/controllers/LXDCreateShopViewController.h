@@ -36,6 +36,8 @@
 - (IBAction)saveInfoClicked:(id)sender;
 - (IBAction)getPositionClicked:(id)sender;
 - (IBAction)gotoWebsite:(id)sender;
+- (IBAction)addMoreInfoClicked:(id)sender;
+
 
 @end
 

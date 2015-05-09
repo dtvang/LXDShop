@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB047A291AFE1531004C2087 /* LXDAddMoreInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB047A281AFE1531004C2087 /* LXDAddMoreInformationViewController.m */; };
 		AB88B4221AF7B65B00C52972 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88B4211AF7B65B00C52972 /* main.m */; };
 		AB88B4251AF7B65B00C52972 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88B4241AF7B65B00C52972 /* AppDelegate.m */; };
 		AB88B4281AF7B65B00C52972 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88B4271AF7B65B00C52972 /* ViewController.m */; };
@@ -62,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB047A271AFE1531004C2087 /* LXDAddMoreInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXDAddMoreInformationViewController.h; path = src/controllers/LXDAddMoreInformationViewController.h; sourceTree = "<group>"; };
+		AB047A281AFE1531004C2087 /* LXDAddMoreInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LXDAddMoreInformationViewController.m; path = src/controllers/LXDAddMoreInformationViewController.m; sourceTree = "<group>"; };
 		AB88B41C1AF7B65B00C52972 /* Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Food.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB88B4201AF7B65B00C52972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB88B4211AF7B65B00C52972 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -259,6 +262,8 @@
 				AB88B44A1AF7B75600C52972 /* template */,
 				AB88B44E1AF7B7CF00C52972 /* LXDCreateShopViewController.h */,
 				AB88B44F1AF7B7CF00C52972 /* LXDCreateShopViewController.m */,
+				AB047A271AFE1531004C2087 /* LXDAddMoreInformationViewController.h */,
+				AB047A281AFE1531004C2087 /* LXDAddMoreInformationViewController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 				E969C3521AFB10B90026944B /* UEntityManager.m in Sources */,
 				E969C34B1AFB0F5B0026944B /* ShopEntity.m in Sources */,
 				E969C3401AFB0A910026944B /* JSONValueTransformer.m in Sources */,
+				AB047A291AFE1531004C2087 /* LXDAddMoreInformationViewController.m in Sources */,
 				E969C34F1AFB10660026944B /* UDatabase.m in Sources */,
 				E969C33C1AFB0A910026944B /* JSONAPI.m in Sources */,
 				AB88B4251AF7B65B00C52972 /* AppDelegate.m in Sources */,

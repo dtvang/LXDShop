@@ -517,11 +517,38 @@ SBDDrG5oIOG6om5oA
                         <outlet property="imageOne" destination="XPC-qA-OBI" id="9Un-Sr-tMm"/>
                         <outlet property="mapView" destination="8Dg-rl-2jI" id="lYV-4N-gD9"/>
                         <outlet property="scrollView" destination="bxd-fj-7hO" id="SC5-o2-TsZ"/>
+                        <segue destination="TEg-3f-ZJ0" kind="show" identifier="AddMoreInformation" id="LMb-7C-2nl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-307" y="-177"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bff-II-HXj">
+            <objects>
+                <viewController id="E6L-g1-P2o" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c3h-44-rJt"/>
+                        <viewControllerLayoutGuide type="bottom" id="WLl-J5-cG1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eoD-v0-7I2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Vqi-WK-RIz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O9h-R7-d0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-170" y="-593"/>
         </scene>
         <!--Add More Information View Controller-->
         <scene sceneID="3ov-y6-5UA">

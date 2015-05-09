@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB047A291AFE1531004C2087 /* LXDAddMoreInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB047A281AFE1531004C2087 /* LXDAddMoreInformationViewController.m */; };
+		AB047A2D1AFE2778004C2087 /* UIPopover+iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = AB047A2C1AFE2778004C2087 /* UIPopover+iPhone.m */; };
 		AB88B4221AF7B65B00C52972 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88B4211AF7B65B00C52972 /* main.m */; };
 		AB88B4251AF7B65B00C52972 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88B4241AF7B65B00C52972 /* AppDelegate.m */; };
 		AB88B4281AF7B65B00C52972 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88B4271AF7B65B00C52972 /* ViewController.m */; };
@@ -65,6 +66,8 @@
 /* Begin PBXFileReference section */
 		AB047A271AFE1531004C2087 /* LXDAddMoreInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXDAddMoreInformationViewController.h; path = src/controllers/LXDAddMoreInformationViewController.h; sourceTree = "<group>"; };
 		AB047A281AFE1531004C2087 /* LXDAddMoreInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LXDAddMoreInformationViewController.m; path = src/controllers/LXDAddMoreInformationViewController.m; sourceTree = "<group>"; };
+		AB047A2B1AFE2778004C2087 /* UIPopover+iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIPopover+iPhone.h"; path = "src/components/popover/UIPopover+iPhone.h"; sourceTree = "<group>"; };
+		AB047A2C1AFE2778004C2087 /* UIPopover+iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIPopover+iPhone.m"; path = "src/components/popover/UIPopover+iPhone.m"; sourceTree = "<group>"; };
 		AB88B41C1AF7B65B00C52972 /* Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Food.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB88B4201AF7B65B00C52972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB88B4211AF7B65B00C52972 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -168,6 +171,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB047A2A1AFE26B1004C2087 /* popover */ = {
+			isa = PBXGroup;
+			children = (
+				AB047A2B1AFE2778004C2087 /* UIPopover+iPhone.h */,
+				AB047A2C1AFE2778004C2087 /* UIPopover+iPhone.m */,
+			);
+			name = popover;
+			sourceTree = "<group>";
+		};
 		AB88B4131AF7B65B00C52972 = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +292,7 @@
 		E929A2551AFA0F6700D843EF /* components */ = {
 			isa = PBXGroup;
 			children = (
+				AB047A2A1AFE26B1004C2087 /* popover */,
 				E929A2561AFA0F9600D843EF /* LXDImageSource.h */,
 				E929A2571AFA0F9600D843EF /* LXDImageSource.m */,
 			);
@@ -542,6 +555,7 @@
 				AB047A291AFE1531004C2087 /* LXDAddMoreInformationViewController.m in Sources */,
 				E969C34F1AFB10660026944B /* UDatabase.m in Sources */,
 				E969C33C1AFB0A910026944B /* JSONAPI.m in Sources */,
+				AB047A2D1AFE2778004C2087 /* UIPopover+iPhone.m in Sources */,
 				AB88B4251AF7B65B00C52972 /* AppDelegate.m in Sources */,
 				E969C33A1AFB0A910026944B /* JSONModelError.m in Sources */,
 				E969C35E1AFB43540026944B /* LXDGlobals.m in Sources */,

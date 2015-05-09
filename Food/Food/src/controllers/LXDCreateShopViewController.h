@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "LXDTemplateViewController.h"
 #import "LXDImageSource.h"
+#import "UIPopover+iPhone.h"
 
-@interface LXDCreateShopViewController : LXDTemplateViewController <LXImageSourceDelegate>
+@interface LXDCreateShopViewController : LXDTemplateViewController <LXImageSourceDelegate,UIPopoverControllerDelegate>
 
+
+@property (strong, nonatomic) UIViewController *popView;
 @property (strong, nonatomic) LXDImageSource *imageSourceControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -30,6 +33,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *btnDropBusiness;
 @property (weak, nonatomic) IBOutlet UIImageView *imageOne;
+@property (weak, nonatomic) IBOutlet UIView *viewCountry;
 
 - (IBAction)closeClicked:(id)sender;
 - (IBAction)openCameraClicked:(id)sender;
@@ -37,6 +41,7 @@
 - (IBAction)getPositionClicked:(id)sender;
 - (IBAction)gotoWebsite:(id)sender;
 - (IBAction)addMoreInfoClicked:(id)sender;
+- (IBAction)showListCountry:(id)sender;
 
 
 @end

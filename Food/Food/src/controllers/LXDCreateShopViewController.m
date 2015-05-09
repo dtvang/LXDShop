@@ -59,6 +59,18 @@
 }
 */
 
+- (void) showPopViewWithData:(NSMutableArray *)data
+{
+    self.popView = [self.storyboard instantiateViewControllerWithIdentifier:@"PopoverIphone"];
+    
+    UIPopoverController *pop = [[UIPopoverController alloc] initWithContentViewController:self.popView];
+    [pop setDelegate:self];
+    
+    CGRect frameBtnCountry = [self.btnDropCountry convertRect:self.btnDropCountry.frame toView:self.view];
+    
+    [pop presentPopoverFromRect:frameBtnCountry inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
+}
+
 - (IBAction)closeClicked:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -81,6 +93,10 @@
 
 - (IBAction)addMoreInfoClicked:(id)sender {
     [self performSegueWithIdentifier:@"AddMoreInformation" sender:self];
+}
+
+- (IBAction)showListCountry:(id)sender {
+    [self showPopViewWithData:nil];
 }
 
 #pragma mark - LXImageSourceDelegate

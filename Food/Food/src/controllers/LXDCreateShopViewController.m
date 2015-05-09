@@ -71,6 +71,11 @@
     [pop presentPopoverFromRect:frameBtnCountry inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
 }
 
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+    return UIModalPresentationNone;
+}
+
+
 - (IBAction)closeClicked:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

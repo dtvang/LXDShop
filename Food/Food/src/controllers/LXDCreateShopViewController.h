@@ -11,7 +11,7 @@
 #import "LXDImageSource.h"
 #import "UIPopover+iPhone.h"
 
-@interface LXDCreateShopViewController : LXDTemplateViewController <LXImageSourceDelegate,UIPopoverControllerDelegate>
+@interface LXDCreateShopViewController : LXDTemplateViewController <LXImageSourceDelegate,UIPopoverPresentationControllerDelegate>
 
 
 @property (strong, nonatomic) UIViewController *popView;

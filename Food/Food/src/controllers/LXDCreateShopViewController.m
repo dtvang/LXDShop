@@ -8,7 +8,7 @@
 
 #import "LXDCreateShopViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
-
+#import "LXDDropDownList.h"
 @interface LXDCreateShopViewController ()
 {
      GMSMapView *gMapView;
@@ -20,8 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self setAutomaticallyAdjustsScrollViewInsets:NO];
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
                                                             longitude:151.20
@@ -36,12 +34,40 @@
     marker.title = @"Sydney";
     marker.snippet = @"Australia";
     marker.map = gMapView;
+    
+//    NSLog(@"before : %f",self.avatarViewHeight.constant);
+//
+   // self.avatarView.hidden = YES;
+    self.avatarViewHeight.constant = -84.0f;
+    [self.btnAddInfo setNeedsUpdateConstraints];
+    [self.contentMapView setNeedsUpdateConstraints];
+//    
+//     NSLog(@"after : %f",self.avatarViewHeight.constant);
+    
+    [self decorateUI];
 }
 
--(void)viewDidLayoutSubviews {
+- (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.scrollView.contentSize = self.contentView.frame.size;
     gMapView.frame = CGRectMake(0.0f, 0.0f, self.mapView.frame.size.width, self.mapView.frame.size.height);
+    
+    
+}
+
+- (void) decorateUI
+{
+    self.informationView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.informationView.layer.borderWidth = 1.0f;
+    
+    self.imageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.imageView.layer.borderWidth = 1.0f;
+    
+    self.avatarView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.avatarView.layer.borderWidth = 1.0f;
+    
+    self.contentMapView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.contentMapView.layer.borderWidth = 1.0f;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,14 +87,14 @@
 
 - (void) showPopViewWithData:(NSMutableArray *)data
 {
-    self.popView = [self.storyboard instantiateViewControllerWithIdentifier:@"PopoverIphone"];
+    LXDDropDownList *dropList = [[LXDDropDownList alloc] initWithNibName:@"LXDDropDownList" bundle:nil];
+    dropList.view.frame = self.view.frame;
     
-    UIPopoverController *pop = [[UIPopoverController alloc] initWithContentViewController:self.popView];
-    [pop setDelegate:self];
+    CGRect frame = [self.btnDropCountry.superview convertRect:self.btnDropCountry.frame toView:self.view];
     
-    CGRect frameBtnCountry = [self.btnDropCountry convertRect:self.btnDropCountry.frame toView:self.view];
-    
-    [pop presentPopoverFromRect:frameBtnCountry inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
+    [dropList showAtRect:frame withData:nil];
+    [self addChildViewController:dropList];
+    [self.view addSubview:dropList.view];
 }
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {

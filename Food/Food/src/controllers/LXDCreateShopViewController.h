@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "LXDTemplateViewController.h"
 #import "LXDImageSource.h"
-#import "UIPopover+iPhone.h"
 
 @interface LXDCreateShopViewController : LXDTemplateViewController <LXImageSourceDelegate,UIPopoverPresentationControllerDelegate>
 
-
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *avatarViewHeight;
 @property (strong, nonatomic) UIViewController *popView;
 @property (strong, nonatomic) LXDImageSource *imageSourceControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -21,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnWebsite;
 @property (weak, nonatomic) IBOutlet UIButton *btnCamera;
 @property (weak, nonatomic) IBOutlet UIButton *btnSaveInfo;
+@property (weak, nonatomic) IBOutlet UIView *informationView;
+@property (weak, nonatomic) IBOutlet UIView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *avatarView;
+@property (weak, nonatomic) IBOutlet UIView *contentMapView;
 
 @property (weak, nonatomic) IBOutlet UIView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *btnAddInfo;

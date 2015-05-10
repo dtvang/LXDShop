@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AB047A291AFE1531004C2087 /* LXDAddMoreInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB047A281AFE1531004C2087 /* LXDAddMoreInformationViewController.m */; };
-		AB047A2D1AFE2778004C2087 /* UIPopover+iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = AB047A2C1AFE2778004C2087 /* UIPopover+iPhone.m */; };
+		AB2A35C81AFF59AA0027354B /* LXDDropDownList.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2A35C61AFF59AA0027354B /* LXDDropDownList.m */; };
+		AB2A35C91AFF59AA0027354B /* LXDDropDownList.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB2A35C71AFF59AA0027354B /* LXDDropDownList.xib */; };
 		AB88B4221AF7B65B00C52972 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88B4211AF7B65B00C52972 /* main.m */; };
 		AB88B4251AF7B65B00C52972 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88B4241AF7B65B00C52972 /* AppDelegate.m */; };
 		AB88B4281AF7B65B00C52972 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB88B4271AF7B65B00C52972 /* ViewController.m */; };
@@ -66,8 +67,9 @@
 /* Begin PBXFileReference section */
 		AB047A271AFE1531004C2087 /* LXDAddMoreInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXDAddMoreInformationViewController.h; path = src/controllers/LXDAddMoreInformationViewController.h; sourceTree = "<group>"; };
 		AB047A281AFE1531004C2087 /* LXDAddMoreInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LXDAddMoreInformationViewController.m; path = src/controllers/LXDAddMoreInformationViewController.m; sourceTree = "<group>"; };
-		AB047A2B1AFE2778004C2087 /* UIPopover+iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIPopover+iPhone.h"; path = "src/components/popover/UIPopover+iPhone.h"; sourceTree = "<group>"; };
-		AB047A2C1AFE2778004C2087 /* UIPopover+iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIPopover+iPhone.m"; path = "src/components/popover/UIPopover+iPhone.m"; sourceTree = "<group>"; };
+		AB2A35C51AFF59AA0027354B /* LXDDropDownList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXDDropDownList.h; path = src/components/droplist/LXDDropDownList.h; sourceTree = "<group>"; };
+		AB2A35C61AFF59AA0027354B /* LXDDropDownList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LXDDropDownList.m; path = src/components/droplist/LXDDropDownList.m; sourceTree = "<group>"; };
+		AB2A35C71AFF59AA0027354B /* LXDDropDownList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LXDDropDownList.xib; path = src/components/droplist/LXDDropDownList.xib; sourceTree = "<group>"; };
 		AB88B41C1AF7B65B00C52972 /* Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Food.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB88B4201AF7B65B00C52972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB88B4211AF7B65B00C52972 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -171,13 +173,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AB047A2A1AFE26B1004C2087 /* popover */ = {
+		AB2A35BF1AFF57390027354B /* droplist */ = {
 			isa = PBXGroup;
 			children = (
-				AB047A2B1AFE2778004C2087 /* UIPopover+iPhone.h */,
-				AB047A2C1AFE2778004C2087 /* UIPopover+iPhone.m */,
+				AB2A35C51AFF59AA0027354B /* LXDDropDownList.h */,
+				AB2A35C61AFF59AA0027354B /* LXDDropDownList.m */,
+				AB2A35C71AFF59AA0027354B /* LXDDropDownList.xib */,
 			);
-			name = popover;
+			name = droplist;
 			sourceTree = "<group>";
 		};
 		AB88B4131AF7B65B00C52972 = {
@@ -292,7 +295,7 @@
 		E929A2551AFA0F6700D843EF /* components */ = {
 			isa = PBXGroup;
 			children = (
-				AB047A2A1AFE26B1004C2087 /* popover */,
+				AB2A35BF1AFF57390027354B /* droplist */,
 				E929A2561AFA0F9600D843EF /* LXDImageSource.h */,
 				E929A2571AFA0F9600D843EF /* LXDImageSource.m */,
 			);
@@ -514,6 +517,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB2A35C91AFF59AA0027354B /* LXDDropDownList.xib in Resources */,
 				AB88B42B1AF7B65B00C52972 /* Main.storyboard in Resources */,
 				AB88B4301AF7B65B00C52972 /* LaunchScreen.xib in Resources */,
 				AB88B42D1AF7B65B00C52972 /* Images.xcassets in Resources */,
@@ -551,11 +555,11 @@
 				E969C33B1AFB0A910026944B /* NSArray+JSONModel.m in Sources */,
 				E969C3521AFB10B90026944B /* UEntityManager.m in Sources */,
 				E969C34B1AFB0F5B0026944B /* ShopEntity.m in Sources */,
+				AB2A35C81AFF59AA0027354B /* LXDDropDownList.m in Sources */,
 				E969C3401AFB0A910026944B /* JSONValueTransformer.m in Sources */,
 				AB047A291AFE1531004C2087 /* LXDAddMoreInformationViewController.m in Sources */,
 				E969C34F1AFB10660026944B /* UDatabase.m in Sources */,
 				E969C33C1AFB0A910026944B /* JSONAPI.m in Sources */,
-				AB047A2D1AFE2778004C2087 /* UIPopover+iPhone.m in Sources */,
 				AB88B4251AF7B65B00C52972 /* AppDelegate.m in Sources */,
 				E969C33A1AFB0A910026944B /* JSONModelError.m in Sources */,
 				E969C35E1AFB43540026944B /* LXDGlobals.m in Sources */,
@@ -690,6 +694,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -706,6 +711,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

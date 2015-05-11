@@ -10,6 +10,7 @@
 #import "UDatabase.h"
 #import "ShopEntity.h"
 #import "LXDShopFacade.h"
+#import "FactorySQLCommand.h"
 static UEntityManager *instance;
 
 @interface UEntityManager()
@@ -44,7 +45,25 @@ static UEntityManager *instance;
 
 - (int)persit:(UEntity *)pEntity {
 
-    return 1;
+    int tResult = 0;
+    
+    if (self.database)
+    {
+        NSString * tCommand =  [[FactorySQLCommand getInstance] getCreateRow:pEntity];
+        sqlite3_stmt * tStatement = [self.database createStatementFromCommand:tCommand];
+        [self bindParamsToStatement:tStatement fromEntity:pEntity];
+        tResult =   [self.database executeStatementCommand:tStatement];
+        [self.database finalizeStatement:tStatement];
+    }
+    
+    if (tResult != kUDatabaseRollbackTransactionValue)
+    {
+        int tLastInsertedId =   sqlite3_last_insert_rowid([database getDBInstance]);
+        pEntity.identity    =   [NSString stringWithFormat:@"%d", tLastInsertedId];
+        tResult =   tLastInsertedId;
+    }
+    
+    return tResult;
 }
 
 - (int)update:(UEntity *)pEntity {
@@ -75,7 +94,7 @@ static UEntityManager *instance;
     NSString *tableName = @"";
     if ([pEntityClass isSubclassOfClass:[ShopEntity class]]) {
         tableName = @"Shop";
-        commandTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)", tableName];
+        commandTable = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, numberPhone TEXT, address TEXT, country TEXT, province TEXT, district TEXT, businessMethod TEXT, website TEXT)", tableName];
     }
     
     return commandTable;

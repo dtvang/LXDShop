@@ -10,8 +10,6 @@
 #import "UEntityManager.h"
 #import "UEntity.h"
 
-#define kSQLCommandCreateTable @"CREATE TABLE IF NOT EXISTS %@ (%@ INTEGER PRIMARY KEY AUTOINCREMENT,%@)"
-
 @interface UFacade : NSObject
 
 @property (strong, nonatomic) Class entityClass;

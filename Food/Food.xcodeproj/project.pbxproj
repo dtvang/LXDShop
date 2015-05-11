@@ -52,6 +52,7 @@
 		E969C3571AFB11DA0026944B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E969C3561AFB11DA0026944B /* libsqlite3.dylib */; };
 		E969C35B1AFB42D60026944B /* LXDShopFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = E969C35A1AFB42D60026944B /* LXDShopFacade.m */; };
 		E969C35E1AFB43540026944B /* LXDGlobals.m in Sources */ = {isa = PBXBuildFile; fileRef = E969C35D1AFB43540026944B /* LXDGlobals.m */; };
+		E9E587561B00C14B005A226A /* FactorySQLCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E587551B00C14B005A226A /* FactorySQLCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,8 @@
 		E969C35A1AFB42D60026944B /* LXDShopFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LXDShopFacade.m; path = src/models/facade/shop/LXDShopFacade.m; sourceTree = "<group>"; };
 		E969C35C1AFB43540026944B /* LXDGlobals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXDGlobals.h; path = src/globals/LXDGlobals.h; sourceTree = "<group>"; };
 		E969C35D1AFB43540026944B /* LXDGlobals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LXDGlobals.m; path = src/globals/LXDGlobals.m; sourceTree = "<group>"; };
+		E9E587541B00C14B005A226A /* FactorySQLCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FactorySQLCommand.h; path = src/models/factorySQLCommand/FactorySQLCommand.h; sourceTree = "<group>"; };
+		E9E587551B00C14B005A226A /* FactorySQLCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FactorySQLCommand.m; path = src/models/factorySQLCommand/FactorySQLCommand.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +308,7 @@
 		E969C31B1AFB06390026944B /* models */ = {
 			isa = PBXGroup;
 			children = (
+				E9E587531B00C115005A226A /* factorySQLCommand */,
 				E969C34C1AFB101C0026944B /* database */,
 				E969C3431AFB0EBA0026944B /* entityManager */,
 				E969C3421AFB0E950026944B /* facade */,
@@ -437,6 +441,15 @@
 			name = shop;
 			sourceTree = "<group>";
 		};
+		E9E587531B00C115005A226A /* factorySQLCommand */ = {
+			isa = PBXGroup;
+			children = (
+				E9E587541B00C14B005A226A /* FactorySQLCommand.h */,
+				E9E587551B00C14B005A226A /* FactorySQLCommand.m */,
+			);
+			name = factorySQLCommand;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -542,6 +555,7 @@
 				E969C3371AFB0A910026944B /* JSONModel.m in Sources */,
 				AB88B4501AF7B7CF00C52972 /* LXDCreateShopViewController.m in Sources */,
 				E969C35B1AFB42D60026944B /* LXDShopFacade.m in Sources */,
+				E9E587561B00C14B005A226A /* FactorySQLCommand.m in Sources */,
 				E969C3391AFB0A910026944B /* JSONModelClassProperty.m in Sources */,
 				E929A2581AFA0F9600D843EF /* LXDImageSource.m in Sources */,
 				AB88B4281AF7B65B00C52972 /* ViewController.m in Sources */,

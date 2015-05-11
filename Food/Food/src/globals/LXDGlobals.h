@@ -14,5 +14,8 @@
 
 + (LXDGlobals *)getInstance;
 - (void)createDatabase;
-
+- (NSMutableArray *) getCountries;
+- (NSMutableArray *) getProvinces;
+- (NSMutableArray *) getDistricts;
+- (NSMutableArray *) getBusinessMethods;
 @end

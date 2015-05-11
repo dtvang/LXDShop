@@ -10,6 +10,8 @@
 
 @interface LXDDropDownList ()
 
+@property (assign, nonatomic) TYPE_DATA type;
+
 @end
 
 @implementation LXDDropDownList
@@ -37,8 +39,22 @@
 }
 */
 
+- (void) presentPopoverFromRect:(CGRect)rect inViewController:(UIViewController *)controller withType:(TYPE_DATA)type andData:(NSMutableArray *)data;
+{
+    self.type = type;
+    self.view.frame = controller.view.frame;
+    
+    [self showAtRect:rect withData:data];
+    [controller addChildViewController:self];
+    [controller.view addSubview:self.view];
+
+}
+
 - (void)showAtRect:(CGRect)frame withData:(NSMutableArray *)data {
+    
+    self.data = data;
     self.tableView.frame = CGRectMake(frame.origin.x - self.tableView.frame.size.width + frame.size.width, frame.origin.y + frame.size.height, self.tableView.frame.size.width, self.tableView.frame.size.height);
+    
 }
 
 - (IBAction)closeView:(id)sender {
@@ -57,7 +73,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 5;
+    
+    return (self.data ? self.data.count : 0);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,7 +87,10 @@
         cell.contentView.backgroundColor = [UIColor lightGrayColor];
     }
     // Configure the cell...
-    cell.textLabel.text = @"Hello there!";
+    if (self.data) {
+        NSString *title = [self.data objectAtIndex:indexPath.row];
+        cell.textLabel.text = title;
+    }
     
     return cell;
 }
@@ -79,7 +99,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Row pressed!!");
+    if (self.delegate && [self.delegate respondsToSelector:@selector(selected:withData:ofType:)]) {
+        [self.delegate selected:self withData:[self.data objectAtIndex:indexPath.row] ofType:self.type];
+    }
+    
+    [self.view removeFromSuperview];
+    [self removeFromParentViewController];
 }
 
 @end

@@ -11,5 +11,12 @@
 @interface ShopEntity : UEntity
 
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *numberPhone;
+@property (strong, nonatomic) NSString *address;
+@property (strong, nonatomic) NSString *country;
+@property (strong, nonatomic) NSString *province;
+@property (strong, nonatomic) NSString *district;
+@property (strong, nonatomic) NSString *businessMethod;
+@property (strong, nonatomic) NSString *website;
 
 @end

@@ -51,7 +51,7 @@ static UDatabase *instance;
     }
 }
 
-- (int)executeRequest:(NSString *)pCommand
+- (int)execute:(NSString *)pCommand
 {
     char *tErrorMessage;
     int tError = sqlite3_exec(db, [pCommand UTF8String], NULL, NULL, &tErrorMessage);
@@ -60,6 +60,40 @@ static UDatabase *instance;
     }
     
     return tError;
+}
+
+- (sqlite3_stmt *)executeSelectCommad:(NSString *)pCommand
+{
+    return [self exeSelect:pCommand];
+}
+
+- (int)executeStatementCommand:(sqlite3_stmt *)pStatement
+{
+    return sqlite3_step(pStatement);
+}
+
+
+- (void)finalizeStatement:(sqlite3_stmt *)pStatement
+{
+    sqlite3_finalize(pStatement);
+}
+
+- (sqlite3_stmt *)exeSelect:(NSString *)pCommand
+{
+    sqlite3_stmt *tStatement;
+    int i = sqlite3_prepare_v2(db, [pCommand UTF8String], -1, &tStatement, NULL);
+    
+    if (i != SQLITE_OK)
+    {
+        tStatement = nil;
+        NSLog(@"error command : %s : %@", sqlite3_errmsg(db), pCommand);
+    }
+    return tStatement;
+}
+
+- (sqlite3 *)getDBInstance
+{
+    return db;
 }
 
 - (void)closeConnection

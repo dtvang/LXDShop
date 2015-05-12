@@ -50,16 +50,13 @@ static UEntityManager *instance;
     if (self.database)
     {
         NSString * tCommand =  [[FactorySQLCommand getInstance] getCreateRow:pEntity];
-        sqlite3_stmt * tStatement = [self.database createStatementFromCommand:tCommand];
+        sqlite3_stmt * tStatement = [self.database executeSelectCommad:tCommand];
         [self bindParamsToStatement:tStatement fromEntity:pEntity];
         tResult =   [self.database executeStatementCommand:tStatement];
         [self.database finalizeStatement:tStatement];
-    }
-    
-    if (tResult != kUDatabaseRollbackTransactionValue)
-    {
-        int tLastInsertedId =   sqlite3_last_insert_rowid([database getDBInstance]);
-        pEntity.identity    =   [NSString stringWithFormat:@"%d", tLastInsertedId];
+        
+        int tLastInsertedId =  (int)sqlite3_last_insert_rowid([self.database getDBInstance]);
+        pEntity.id    =   tLastInsertedId;
         tResult =   tLastInsertedId;
     }
     
@@ -83,7 +80,7 @@ static UEntityManager *instance;
 - (void)createTable:(Class)pEntityClass
 {
     if (pEntityClass && self.database) {
-        [self.database executeRequest:[self getCreateTable:pEntityClass]];
+        [self.database execute:[self getCreateTable:pEntityClass]];
     }
 }
 
@@ -99,5 +96,24 @@ static UEntityManager *instance;
     
     return commandTable;
 }
+
+- (void)bindParamsToStatement:(sqlite3_stmt *)pStatement fromEntity:(UEntity *)pEntity
+{
+    if ([pEntity isMemberOfClass:[ShopEntity class]]) {
+        ShopEntity *sEntity = (ShopEntity *)pEntity;
+        
+        sqlite3_bind_text(pStatement, 1, [sEntity.name UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(pStatement, 2, [sEntity.numberPhone UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(pStatement, 3, [sEntity.address UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(pStatement, 4, [sEntity.country UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(pStatement, 5, [sEntity.province UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(pStatement, 6, [sEntity.district UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(pStatement, 7, [sEntity.businessMethod UTF8String], -1, SQLITE_TRANSIENT);
+        sqlite3_bind_text(pStatement, 8, [sEntity.website UTF8String], -1, SQLITE_TRANSIENT);
+    } else {
+        NSLog(@"Entity not found!");
+    }
+}
+
 
 @end

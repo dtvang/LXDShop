@@ -13,6 +13,10 @@
 
 + (UDatabase *)getInstance;
 - (void) openDB:(NSString *) pName;
-- (int)executeRequest:(NSString *)pCommand;
+- (int)execute:(NSString *)pCommand;
+- (sqlite3_stmt *)executeSelectCommad:(NSString *)pCommand;
+- (int)executeStatementCommand:(sqlite3_stmt *)pStatement;
+- (void)finalizeStatement:(sqlite3_stmt *)pStatement;
+- (sqlite3 *)getDBInstance;
 - (void)closeConnection;
 @end

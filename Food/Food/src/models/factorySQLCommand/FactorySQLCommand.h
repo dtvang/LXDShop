@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UEntity.h"
 
 @interface FactorySQLCommand : NSObject
 + (FactorySQLCommand *)getInstance;

@@ -12,7 +12,7 @@ static LXDShopFacade *instance;
 
 @implementation LXDShopFacade
 
-+(id)getInstance {
++ (id)getInstance {
     if(!instance) {
         instance = [[[self class] alloc] init];
     }

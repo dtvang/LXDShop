@@ -7,15 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
 #import "LXDTemplateViewController.h"
 #import "LXDImageSource.h"
 #import "LXDDropDownList.h"
 #import "LXDGlobals.h"
 
-@interface LXDCreateShopViewController : LXDTemplateViewController <LXImageSourceDelegate,UIPopoverPresentationControllerDelegate, LXDDropDownListDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface LXDCreateShopViewController : LXDTemplateViewController <LXImageSourceDelegate,UIPopoverPresentationControllerDelegate, LXDDropDownListDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GMSMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constantSpaceAddInfoWithImageView;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constantSpaceAddInfoWithMapView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constantSpaceImage1_Left;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constantSpaceImage1_2;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constantSpaceImage2_3;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constantSpaceImage3_4;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constantSpaceImage4_5;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constantSpaceImage5_Right;
+
+
 @property (strong, nonatomic) UIViewController *popView;
 @property (strong, nonatomic) LXDImageSource *imageSourceControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -65,6 +73,8 @@
 - (IBAction)showListMethodBusiness:(id)sender;
 
 - (IBAction)showListProvince:(id)sender;
+
+- (IBAction)dismissKeyboard:(id)sender;
 
 @end
 

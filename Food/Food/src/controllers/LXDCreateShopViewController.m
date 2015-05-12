@@ -7,7 +7,6 @@
 //
 
 #import "LXDCreateShopViewController.h"
-#import <GoogleMaps/GoogleMaps.h>
 #import "LXDShopFacade.h"
 
 @interface LXDCreateShopViewController ()
@@ -21,6 +20,8 @@
 @property (strong, nonatomic) NSMutableArray *imageViewsManager;
 @property (strong, nonatomic) UIImageView *imageViewSelected;
 
+@property (assign, nonatomic) CLLocationCoordinate2D coordinateSelected;
+
 @end
 
 @implementation LXDCreateShopViewController
@@ -31,27 +32,20 @@
     self.indexImage = 0;
     self.indexImageSelected = 0;
     self.indexImageAvatar = -1;
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
-                                                            longitude:151.20
-                                                                 zoom:6];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:10.838596
+                                                            longitude:106.629131
+                                                                 zoom:10];
     self.gMapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    self.gMapView.delegate = self;
     self.gMapView.myLocationEnabled = YES;
     [self.mapView addSubview: self.gMapView];
-    
-    // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = self.gMapView;
-    
+
     self.imageSelectedManager = [[NSMutableArray alloc] initWithCapacity:5];
     self.imageViewsManager = [[NSMutableArray alloc] initWithArray:@[self.imageOne, self.imageTwo, self.imageThree, self.imageFour, self.imageFive]];
-    // [self hideAvatarView];
     
+    [self hideAvatarView];
     [self decorateUI];
 }
-
 
 - (void) addTapGestureForImageView:(UIImageView *)imageView {
     if  (imageView.gestureRecognizers.count == 0) {
@@ -99,7 +93,6 @@
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:@"Làm ảnh đại diện", @"Thay hình", @"Xoá hình", nil];
     [actionSheet showInView:self.view];
-    
 }
 
 
@@ -107,10 +100,17 @@
     [super viewDidLayoutSubviews];
     self.scrollView.contentSize = self.contentView.frame.size;
     self.gMapView.frame = CGRectMake(0.0f, 0.0f, self.mapView.frame.size.width, self.mapView.frame.size.height);
+    
+    
+    CGSize size = self.imageView.frame.size;
+    
+    float spaceImage = (size.width - (self.constantSpaceImage1_Left.constant + self.constantSpaceImage5_Right.constant) - (self.imageOne.frame.size.width * 5)) / 4;
+    
+    self.constantSpaceImage1_2.constant = self.constantSpaceImage2_3.constant = self.constantSpaceImage3_4.constant = self.constantSpaceImage4_5.constant = spaceImage;
+
 }
 
-- (void) decorateUI
-{
+- (void) decorateUI {
     self.informationView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.informationView.layer.borderWidth = 1.0f;
     
@@ -188,10 +188,13 @@
     sEntity.website = self.btnWebsite.titleLabel.text;
     
     [[LXDShopFacade getInstance] create:sEntity];
-    
 }
 
 - (IBAction)getPositionClicked:(id)sender {
+    NSString * message = [NSString stringWithFormat:@"(lat: %f, long: %f)", self.coordinateSelected.latitude, self.coordinateSelected.longitude];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Location" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 - (IBAction)gotoWebsite:(id)sender {
@@ -216,6 +219,12 @@
 
 - (IBAction)showListProvince:(id)sender {
     [self showPopViewFromSender:sender type:PROVINCE withData:[[LXDGlobals getInstance] getProvinces]];
+}
+
+- (IBAction)dismissKeyboard:(id)sender {
+    [self.tfAddress resignFirstResponder];
+    [self.tfNameShop resignFirstResponder];
+    [self.tfPhone resignFirstResponder];
 }
 
 #pragma mark - LXImageSourceDelegate
@@ -274,8 +283,6 @@
         imageView.image = [UIImage imageNamed:@"image_placeholder"];
         [self removeTapGestureForImageView:imageView];
     }
-    
-    
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -295,13 +302,17 @@
         self.indexImage = self.indexImage - 1;
         [self setImageFlexible];
         
+        if (self.imageSelectedManager.count == 0) {
+            [self hideAvatarView];
+        }
+        
         if (self.indexImageAvatar == self.indexImageSelected) {
             self.imageViewAvatar.image = self.imageOne.image;
-              if (self.imageSelectedManager.count == 0) {
-                  self.indexImageAvatar = -1;
-              } else {
-                  self.indexImageAvatar = 0;
-              }
+            if (self.imageSelectedManager.count == 0) {
+                self.indexImageAvatar = -1;
+            } else {
+                self.indexImageAvatar = 0;
+            }
         }
     }
 }
@@ -330,6 +341,19 @@
         default:
             break;
     }
+}
+
+#pragma mark - GMSMapViewDelegate
+-(void) mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    [self.gMapView clear];
+  
+    self.coordinateSelected = coordinate;
+
+    GMSMarker *marker3 = [[GMSMarker alloc] init];
+    marker3.position = coordinate;
+    marker3.title = @"Location selected";
+    marker3.map = self.gMapView;
 }
 
 @end

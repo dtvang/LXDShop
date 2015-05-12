@@ -28,10 +28,12 @@ static FactorySQLCommand *instance;
     NSString *commandInsert = @"";
     
     if ([pEntity isKindOfClass:[ShopEntity class]]) {
-        NSString * tColumns =   @"(name, numberPhone, address, country, province, district, businessMethod, website) VALUES ";
+        NSString * tColumns =   @"(name, numberPhone, address, country, province, district, businessMethod, website)";
         NSString * tValues  =   @"(?, ?, ?, ?, ?, ? ,? ,?)";
         
         commandInsert = [NSString stringWithFormat:kUServiceProviderCreateCommand, @"Shop", tColumns, tValues];
+    } else {
+        
     }
     
     return commandInsert;
